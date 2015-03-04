@@ -1,0 +1,4 @@
+Django==1.5.1
+argparse==1.2.1
+selenium==2.45.0
+wsgiref==0.1.2
