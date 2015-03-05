@@ -2,7 +2,7 @@ from django.core.urlresolvers import reverse
 from django.views.generic import ListView, CreateView
 from django.views.generic import UpdateView, DeleteView, DetailView
 from .models import Contact
-from .forms import ContactForm
+from .forms import ContactForm, ContactAddressFormSet
 
 
 class ListContactView(ListView):
@@ -45,3 +45,13 @@ class DeleteContactView(DeleteView):
 
 class ContactView(DetailView):
     model = Contact
+
+
+class EditContactAddressView(UpdateView):
+    model = Contact
+    template_name = 'contacts/edit_addresses.html'
+    form_class = ContactAddressFormSet
+
+    def get_success_url(self):
+        # redirect to the Contact view.
+        return self.get_object().get_absolute_url()
