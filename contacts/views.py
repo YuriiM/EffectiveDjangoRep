@@ -24,7 +24,7 @@ class ListContactView(ListView):
     model = Contact
 
     def get_queryset(self):
-        return Contact.objects.filter(owner=self.request.user)
+        return Contact.objects.filter(owner=self.request.user.id)
 
 
 class CreateContactView(CreateView):
