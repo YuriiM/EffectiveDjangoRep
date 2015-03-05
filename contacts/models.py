@@ -1,4 +1,5 @@
 from django.core.urlresolvers import reverse
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -10,6 +11,7 @@ class Contact(models.Model):
         max_length=255,
     )
     email = models.EmailField()
+    owner = models.ForeignKey(User)
 
     def __str__(self):
         return ' '.join([
@@ -18,7 +20,7 @@ class Contact(models.Model):
         ])
 
     def get_absolute_url(self):
-        return reverse('contacts-view', kwargs={'pk': self.id})
+        return reverse('contacts:contacts-view', kwargs={'pk': self.id})
 
 
 class Address(models.Model):

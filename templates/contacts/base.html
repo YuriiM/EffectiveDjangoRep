@@ -5,8 +5,16 @@
           rel="stylesheet" media="screen">
   </head>
   <body>
-    {% block content %}
-    {% endblock %}
-    <script src="{% static 'contacts/js/bootstrap.min.js' %}"></script>
+      <div>
+          {{ user }}
+          {% if user.is_anonymous %}
+              <a href="{% url 'django.contrib.auth.views.login' %}">login</a>
+          {% else %}
+              <a href="{% url 'django.contrib.auth.views.logout' %}">logout</a>
+          {% endif %}
+      </div>
+      {% block content %}
+      {% endblock %}
+      <script src="{% static 'contacts/js/bootstrap.min.js' %}"></script>
   </body>
 </html>
