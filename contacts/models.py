@@ -43,3 +43,8 @@ class Address(models.Model):
 
     class Meta:
         unique_together = ('contact', 'address_type',)
+
+
+class TestModel(models.Model):
+    first_field = models.CharField(max_length=255)
+    second_field = models.CharField(max_length=255)
